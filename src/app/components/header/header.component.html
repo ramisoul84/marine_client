@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <div class="logo">
+    <button mat-icon-button routerLink="">
+      <mat-icon fontIcon="anchor"></mat-icon>
+    </button>
+    <span>Marine Trade</span>
+  </div>
+  <div>
+    <button mat-icon-button routerLink="orders">
+      <mat-icon fontIcon="apps"></mat-icon>
+    </button>
+    <button mat-icon-button routerLink="local_shipping">
+      <mat-icon
+        fontIcon="local_shipping"
+        [matBadge]="pendingOrders"
+        matBadgeColor="warn"
+      ></mat-icon>
+    </button>
+
+    <button mat-icon-button routerLink="port">
+      <mat-icon fontIcon="directions_boat"></mat-icon>
+    </button>
+    <button mat-icon-button routerLink="login">
+      <mat-icon fontIcon="person"></mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

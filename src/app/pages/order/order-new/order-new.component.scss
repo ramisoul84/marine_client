@@ -1,0 +1,18 @@
+section {
+  padding: 0 1rem 2rem 1rem;
+}
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.destination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.xx {
+  margin: 0;
+  padding: 0;
+}

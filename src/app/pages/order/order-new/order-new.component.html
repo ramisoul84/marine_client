@@ -1,0 +1,40 @@
+<section>
+  <h1>Place a new order</h1>
+  <form [formGroup]="orderNewForm">
+    <mat-form-field>
+      <mat-label>From</mat-label>
+      <input matInput formControlName="from" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>To</mat-label>
+      <input matInput formControlName="to" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Cargo</mat-label>
+      <mat-select formControlName="cargo">
+        <mat-option *ngFor="let type of cargo" [value]="type">{{
+          type
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Weight</mat-label>
+      <input matInput type="number" formControlName="weight" />
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" (click)="onCancelClick()">
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onAddClick()"
+      [disabled]="orderNewForm.invalid"
+    >
+      Add
+    </button>
+  </form>
+</section>

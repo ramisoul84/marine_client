@@ -1,0 +1,33 @@
+<form [formGroup]="registerForm">
+  <mat-form-field>
+    <mat-label>Enter your name</mat-label>
+    <input matInput placeholder="Ivan" required formControlName="firstName" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Enter your last name</mat-label>
+    <input matInput placeholder="Ivanov" required formControlName="lastName" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Enter your email</mat-label>
+    <input
+      matInput
+      placeholder="ivan92@mail.ru"
+      required
+      formControlName="email"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Enter your password</mat-label>
+    <input matInput type="password" required formControlName="lastName" />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    class="submit"
+    (click)="onSubmit()"
+    [disabled]="registerForm.invalid"
+  >
+    Register
+  </button>
+  <span>Already have an account! <a routerLink="/login">login</a></span>
+</form>
