@@ -7,39 +7,57 @@
     <mat-expansion-panel-header>
       Order #{{ order.id }}
     </mat-expansion-panel-header>
-    <div>
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title> 1. Application to broker</mat-panel-title>
-          </mat-expansion-panel-header>
-          <div>dfdfdf</div>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title> 2. Agreement with the ship owner</mat-panel-title>
-          </mat-expansion-panel-header>
-          <div>dfdfdf</div>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title> 3. Coordination with the Port</mat-panel-title>
-          </mat-expansion-panel-header>
-          <div>dfdfdf</div>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title> 4. Vessel loading instructions</mat-panel-title>
-          </mat-expansion-panel-header>
-          <div>dfdfdf</div>
-        </mat-expansion-panel>
-      </mat-accordion>
+    <div class="cards">
+      <mat-card>
+        <mat-card-header>Before loading</mat-card-header>
+        <mat-card-content>
+          <mat-selection-list #before [multiple]="false">
+            @for (operation of operationsBefore; track operation) {
+            <mat-list-option [value]="operation">{{
+              operation
+            }}</mat-list-option>
+            }
+          </mat-selection-list>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-header>After loading</mat-card-header>
+        <mat-card-content>
+          <mat-selection-list
+            #after
+            [multiple]="false"
+            [disabled]="
+              !(
+                before.selectedOptions.hasValue() &&
+                before.selectedOptions.selected[0].value === 'Draft Fixiation'
+              )
+            "
+          >
+            @for (operation of operationsAfter; track operation) {
+            <mat-list-option [value]="operation">{{
+              operation
+            }}</mat-list-option>
+            }
+          </mat-selection-list>
+        </mat-card-content>
+      </mat-card>
     </div>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!before.selectedOptions.hasValue()"
+      (click)="
+        onApply(
+          order,
+          after.selectedOptions.hasValue()
+            ? after.selectedOptions.selected[0].value
+            : before.selectedOptions.hasValue()
+            ? before.selectedOptions.selected[0].value
+            : ''
+        )
+      "
+    >
+      Apply
+    </button>
   </mat-expansion-panel>
 </mat-accordion>

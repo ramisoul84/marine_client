@@ -25,11 +25,7 @@ export class HeaderComponent implements OnInit {
           item.stage === 7
       ).length;
       this.portOrders = data.filter(
-        (item) =>
-          item.stage === 8 ||
-          item.stage === 9 ||
-          item.stage === 10 ||
-          item.stage === 11
+        (item) => item.stage === 8 || item.stage === 9
       ).length;
     });
   }

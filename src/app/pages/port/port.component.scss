@@ -8,3 +8,21 @@
   font-weight: 700;
   border-bottom: 2px solid black;
 }
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+mat-card {
+  background-color: rgba($color: #a7a7a7, $alpha: 0.1);
+}
+
+mat-card-header {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+button {
+  margin-top: 1rem;
+}

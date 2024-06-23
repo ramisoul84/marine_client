@@ -9,6 +9,21 @@ import { Router } from '@angular/router';
   styleUrl: 'port.component.scss',
 })
 export class PortComponent implements OnInit {
+  operationsBefore: string[] = [
+    'Holds cleanliness',
+    'Grain quality',
+    'Draft',
+    'Holds disinfection',
+    'Ballast operations',
+    'Draft Fixiation',
+  ];
+  operationsAfter: string[] = [
+    'Grain sample by inspector',
+    "Captain's signature",
+    'Holds disinfection',
+    'Payment',
+  ];
+
   dataSource!: Order[];
   constructor(private orderService: OrderService, private router: Router) {}
   ngOnInit(): void {
@@ -20,8 +35,12 @@ export class PortComponent implements OnInit {
     });
   }
 
-  onConfirm(order: Order) {
-    this.orderService.updateOrder(order.id, order).subscribe(() => {
+  onApply(order: Order, val: string) {
+    let newStatus = val;
+    let newStage = val === 'Payment' ? 10 : 9;
+
+    let updatedOrder: Order = { ...order, stage: newStage, status: newStatus };
+    this.orderService.updateOrder(order.id, updatedOrder).subscribe(() => {
       this.router.navigate(['orders']);
     });
   }

@@ -23,6 +23,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
 
 const materialModules = [
@@ -38,6 +40,8 @@ const materialModules = [
   MatCheckboxModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatRadioModule,
+  MatListModule,
 ];
 
 @NgModule({
