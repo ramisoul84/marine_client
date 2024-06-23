@@ -26,6 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './pages/home/home.component';
 
 const materialModules = [
   MatToolbarModule,
@@ -56,6 +57,7 @@ const materialModules = [
   declarations: [
     AppComponent,
     HeaderComponent,
+    HomeComponent,
     CargoComponent,
     ShipComponent,
     PortComponent,

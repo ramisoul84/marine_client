@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cargo } from '../_models/cargo';
+import { environment } from '../../environments/environment';
 
-const URL = 'http://localhost:3000/cargo';
+const URL = environment.serverUrl + '/cargo';
 
 @Injectable({ providedIn: 'root' })
 export class CargoService {

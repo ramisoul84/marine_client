@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Order } from '../_models/order';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-const URL = 'http://localhost:3000/order';
+const URL = environment.serverUrl + '/order';
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
