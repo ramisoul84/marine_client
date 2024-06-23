@@ -1,0 +1,109 @@
+<div class="title">
+  <mat-icon fontIcon="directions_boat"></mat-icon>
+  <p>Order a ship</p>
+</div>
+<mat-accordion *ngFor="let order of dataSource">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Order #{{ order.id }}
+    </mat-expansion-panel-header>
+    <div>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> 1. Application to broker</mat-panel-title>
+          </mat-expansion-panel-header>
+          <form [formGroup]="brokerForm">
+            <mat-form-field>
+              <mat-label>Weight</mat-label>
+              <input matInput type="number" formControlName="capacity" />
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="date" />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </form>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> 2. Agreement with the ship owner</mat-panel-title>
+          </mat-expansion-panel-header>
+          <form [formGroup]="ownerForm">
+            <mat-form-field>
+              <mat-label>Choose a date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker1"
+                formControlName="date"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker1"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Bid</mat-label>
+              <input matInput type="number" formControlName="bid" />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Demurrage</mat-label>
+              <input matInput type="number" formControlName="demurrage" />
+            </mat-form-field>
+          </form>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> 3. Coordination with the Port</mat-panel-title>
+          </mat-expansion-panel-header>
+          <form [formGroup]="flagForm">
+            <mat-checkbox formControlName="flag">Russian flag</mat-checkbox>
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="flagForm.controls['flag'].value === true"
+            >
+              Send Documents to port
+            </button>
+          </form>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> 4. Vessel loading instructions</mat-panel-title>
+          </mat-expansion-panel-header>
+          <form [formGroup]="portForm">
+            <mat-form-field>
+              <mat-label>Weight</mat-label>
+              <input matInput type="number" formControlName="weight" />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>From</mat-label>
+              <input matInput t formControlName="from" />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>To</mat-label>
+              <input matInput t formControlName="to" />
+            </mat-form-field>
+          </form>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="actions">
+      <button mat-raised-button color="primary" (click)="onApply(order)">
+        Apply
+      </button>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

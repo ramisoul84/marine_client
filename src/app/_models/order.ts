@@ -2,7 +2,9 @@ export interface Order {
   id: number;
   from: string;
   to: string;
-  cargo: string;
+  grain: string;
   weight: number;
+  stage: number;
   status: string;
+  createdAt: Date;
 }

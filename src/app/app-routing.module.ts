@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { LocalShippingComponen } from './pages/local-shipping/local-shipping.component';
+
 import { PortComponent } from './pages/port/port.component';
+import { CargoComponent } from './pages/cargo/cargo.component';
+import { ShipComponent } from './pages/ship/ship.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'local_shipping', component: LocalShippingComponen },
+  { path: 'cargo', component: CargoComponent },
+  { path: 'ship', component: ShipComponent },
   { path: 'port', component: PortComponent },
   {
     path: '',

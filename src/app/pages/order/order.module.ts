@@ -13,6 +13,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatStepperModule } from '@angular/material/stepper';
 
 const materialModules = [
   MatTableModule,
@@ -23,6 +25,8 @@ const materialModules = [
   MatSelectModule,
   MatInputModule,
   MatDialogModule,
+  MatSnackBarModule,
+  MatStepperModule,
 ];
 
 const routes: Routes = [

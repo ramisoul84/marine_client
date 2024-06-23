@@ -7,19 +7,40 @@
   </div>
   <div>
     <button mat-icon-button routerLink="orders">
-      <mat-icon fontIcon="apps"></mat-icon>
+      <mat-icon fontIcon="assignment"></mat-icon>
     </button>
-    <button mat-icon-button routerLink="local_shipping">
+    <button mat-icon-button routerLink="cargo">
       <mat-icon
         fontIcon="local_shipping"
-        [matBadge]="pendingOrders"
+        [matBadge]="cargoOrders"
         matBadgeColor="warn"
-      ></mat-icon>
+        aria-hidden="false"
+        [matBadgeHidden]="cargoOrders === 0"
+      >
+      </mat-icon>
+    </button>
+
+    <button mat-icon-button routerLink="ship">
+      <mat-icon
+        fontIcon="directions_boat"
+        [matBadge]="shipOrders"
+        matBadgeColor="warn"
+        aria-hidden="false"
+        [matBadgeHidden]="shipOrders === 0"
+      >
+      </mat-icon>
     </button>
 
     <button mat-icon-button routerLink="port">
-      <mat-icon fontIcon="directions_boat"></mat-icon>
+      <mat-icon
+        fontIcon="forklift"
+        [matBadge]="portOrders"
+        matBadgeColor="warn"
+        aria-hidden="false"
+        [matBadgeHidden]="portOrders === 0"
+      ></mat-icon>
     </button>
+
     <button mat-icon-button routerLink="login">
       <mat-icon fontIcon="person"></mat-icon>
     </button>

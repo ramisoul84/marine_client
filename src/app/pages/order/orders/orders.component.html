@@ -1,3 +1,7 @@
+<div class="title">
+  <mat-icon fontIcon="assignment"></mat-icon>
+  <p>Orders</p>
+</div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- Id Column -->
   <ng-container matColumnDef="id">
@@ -20,7 +24,7 @@
   <!-- Cargo Column -->
   <ng-container matColumnDef="cargo">
     <th mat-header-cell *matHeaderCellDef>Cargo</th>
-    <td mat-cell *matCellDef="let element">{{ element.cargo }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.grain }}</td>
   </ng-container>
 
   <!-- Weight Column -->
@@ -43,7 +47,12 @@
       </button>
     </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-icon-button color="primary">
+      <button
+        mat-icon-button
+        color="primary"
+        (click)="onShowInfo(element.id)"
+        routerLink="/order"
+      >
         <mat-icon fontIcon="info"></mat-icon>
       </button>
     </td>

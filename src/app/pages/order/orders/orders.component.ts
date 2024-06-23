@@ -21,20 +21,22 @@ export class OrdersComponent implements OnInit {
     'actions',
   ];
 
-  constructor(public dialog: MatDialog, private orderService: OrderService) {}
+  constructor(public dialog: MatDialog, private orderService: OrderService) {
+    this.orderService.getAllOrders();
+  }
 
   ngOnInit(): void {
-    this.orderService
-      .getAllOrders()
-      .subscribe((data) => (this.dataSource = data));
+    this.orderService.orders.subscribe((data) => (this.dataSource = data));
   }
 
   openOrderNewtDialog() {
     const dialogRef = this.dialog.open(OrderNewComponent);
     dialogRef.afterClosed().subscribe(() => {
-      this.orderService
-        .getAllOrders()
-        .subscribe((data) => (this.dataSource = data));
+      this.orderService.getAllOrders();
     });
+  }
+
+  onShowInfo(id: number) {
+    this.orderService.selectedOrder.next(id);
   }
 }

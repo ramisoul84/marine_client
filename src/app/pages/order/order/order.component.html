@@ -1,61 +1,49 @@
-<section>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title> Cargo</mat-card-title>
-      <mat-card-subtitle>
-        purchase of goods and delivery to ports
-      </mat-card-subtitle>
-    </mat-card-header>
-  </mat-card>
-  <mat-card appearance="outlined">
-    <mat-card-header>
-      <mat-card-title> Ship Order</mat-card-title>
-      <mat-card-subtitle>Herding group</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-card class="card">
-        <mat-card-header>
-          <mat-card-title> Broker</mat-card-title>
-          <mat-card-subtitle>Herding group</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
-          <mat-form-field>
-            <mat-label>Select</mat-label>
-            <mat-select>
-              <mat-option value="one">First option</mat-option>
-              <mat-option value="two">Second option</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </mat-card-actions>
-      </mat-card>
+<div *ngIf="selectedOrder">
+  <div class="title">
+    <mat-icon fontIcon="tag"></mat-icon>
+    <p>{{ selectedOrder.id }}</p>
+  </div>
+  <section>
+    <mat-stepper orientation="vertical">
+      <mat-step>
+        <ng-template matStepLabel> Order Created </ng-template>
 
-      <mat-card class="card">
-        <mat-card-header>
-          <mat-card-title> Owner</mat-card-title>
-          <mat-card-subtitle>Herding group</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
-          <mat-form-field>
-            <mat-label>Data</mat-label>
-            <input matInput />
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Rate</mat-label>
-            <input matInput />
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Demurrage</mat-label>
-            <input matInput />
-          </mat-form-field>
-        </mat-card-actions>
-      </mat-card>
+        <ng-template matStepContent>
+          <div>
+            <p>Order Created at: {{ selectedOrder.createdAt }}</p>
+            <p>From: {{ selectedOrder.from }}</p>
+            <p>To: {{ selectedOrder.to }}</p>
+            <p>Grain: {{ selectedOrder.grain }}</p>
+            <p>Weight: {{ selectedOrder.weight }}</p>
+          </div>
+        </ng-template>
+      </mat-step>
 
-      <mat-card class="card">
-        <mat-card-header>
-          <mat-card-title> Port</mat-card-title>
-          <mat-card-subtitle>Herding group</mat-card-subtitle>
-        </mat-card-header>
-      </mat-card>
-    </mat-card-content>
-  </mat-card>
-</section>
+      <mat-step *ngIf="selectedOrder.stage > 3">
+        <ng-template matStepLabel>
+          Grains purchase and delivery to port
+        </ng-template>
+        <div>
+          <p>Order has approved</p>
+          <p>Grain: {{ selectedCargo.grain }}</p>
+          <p>Weight: {{ selectedCargo.weight }}</p>
+          <p>Date: {{ selectedCargo.date }}</p>
+          <p>Price: {{ selectedCargo.price }}</p>
+        </div>
+      </mat-step>
+      <mat-step *ngIf="selectedOrder.stage > 7">
+        <ng-template matStepLabel> Order a ship </ng-template>
+        <div>
+          <p>Capacity: {{ selectedShip.shipCapacity }}</p>
+          <p>agreement Date with broker: {{ selectedShip.dateBroker }}</p>
+          <p>agreement Date with Owner: {{ selectedShip.dateOwner }}</p>
+          <p>Bid: {{ selectedShip.bid }}</p>
+          <p>Demurrage: {{ selectedShip.demurrage }}</p>
+          <p>Loading Weight: {{ selectedShip.loadingWeight }}</p>
+          <p>Charging Port: {{ selectedShip.from }}</p>
+          <p>Discharging Port: {{ selectedShip.to }}</p>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </section>
+</div>

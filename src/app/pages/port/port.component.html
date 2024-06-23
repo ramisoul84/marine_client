@@ -1,1 +1,45 @@
-<p>port</p>
+<div class="title">
+  <mat-icon fontIcon="forklift"></mat-icon>
+  <p>Port operations ...</p>
+</div>
+<mat-accordion *ngFor="let order of dataSource">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Order #{{ order.id }}
+    </mat-expansion-panel-header>
+    <div>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> 1. Application to broker</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>dfdfdf</div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> 2. Agreement with the ship owner</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>dfdfdf</div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> 3. Coordination with the Port</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>dfdfdf</div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> 4. Vessel loading instructions</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>dfdfdf</div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
